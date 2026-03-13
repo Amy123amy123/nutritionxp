@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutritionXP – Zym Products</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    // EmailJS initialization (optional - for automatic email sending)
+    // Get your public key from https://dashboard.emailjs.com/admin/account
+    // Replace 'YOUR_PUBLIC_KEY' with your actual key
+    (function() {
+      // Uncomment and add your key when you set up EmailJS
+       emailjs.init("5r-xHkvi726k1ATBN");
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="container">
+    <div class="headerimg">
+      <img src="https://instasize.com/api/image/b0e2426687abd8cb722c1532731ddab8925659a72793c6f6c6bd7e1fa1f1c8f3.png">
+    </div>
+    
+    <nav>
+      <input type="text"placeholder = "search">
+      <a href="#" onclick="showPage('home')">Home</a>
+      <!-- <div ><a href="#" onclick="scrollToSection('products')">Shop</a></div> -->
+    
+      <select  style="background:rgba(11,11,15,.95);
+   color: white; width: 59px; border: none;font-size: 15px;">
+           <option >Shop</option>
+            <option> <a href="#" onclick="scrollToSection('categories'); closeMobileMenu();">
+            <i class="fas fa-bullseye"></i> Shop by category
+          </a>
+          ></option>
+            <option><a href="#" onclick="scrollToSection('categories'); closeMobileMenu();">
+            <i class="fas fa-info-circle"></i> Shop by brand
+          </a></option>
+          </select>
+
+      
+      <a href="#" onclick="scrollToSection('categories')">Goals</a>
+      <a href="#" onclick="scrollToSection('about')">About</a>
+      <a href="#" onclick="showPage('orders')">Orders</a>
+      <a href="#" onclick="scrollToSection('contact')">Contact</a>
+    </nav>
+    
+    
+    <div style="display:flex;align-items:center;gap:15px;">
+      <div class="cart-icon-wrapper" onclick="showPage('cart')">
+        <i class="fas fa-shopping-cart cart-icon"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </div>
+      <div class="burger-menu" id="burgerMenu" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+  
+  <!-- MOBILE NAVIGATION -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-header">
+      <h3>Menu</h3>
+      <button class="mobile-nav-close" onclick="closeMobileMenu()">×</button>
+    </div>
+    <a href="#" onclick="showPage('home'); closeMobileMenu();">
+      <i class="fas fa-home"></i> Home
+    </a>
+    <a href="#" onclick="scrollToSection('products'); closeMobileMenu();">
+      <i class="fas fa-shopping-bag"></i> Shop
+    </a>
+    <a href="#" onclick="scrollToSection('categories'); closeMobileMenu();">
+      <i class="fas fa-bullseye"></i> Goals
+    </a>
+    <a href="#" onclick="scrollToSection('about'); closeMobileMenu();">
+      <i class="fas fa-info-circle"></i> About
+    </a>
+    <a href="#" onclick="showPage('orders'); closeMobileMenu();">
+      <i class="fas fa-receipt"></i> Orders
+    </a>
+    <a href="#" onclick="scrollToSection('contact'); closeMobileMenu();">
+      <i class="fas fa-envelope"></i> Contact
+    </a>
+    <a href="#" onclick="showPage('cart'); closeMobileMenu();" class="cart-mobile">
+      <span><i class="fas fa-shopping-cart"></i> View Cart</span>
+      <span class="cart-count" id="mobileCartCount">0</span>
+    </a>
+  </div>
+
+  <!-- HOME PAGE -->
+  <div id="homePage" class="page active">
+    <!-- HERO SECTION - ORIGINAL -->
+    <section class="section full-home d-flex align-items-center aman" data-overlay-dark="1" data-jarallax data-speed="0.2" data-type="scale" id="home">
+      <div class="vc-bg-lines light lines-animate">
+        <span class="border-1"></span>
+        <span class="border-2"></span>
+        <span class="border-3"></span>
+        <span class="border-4"></span>
+        <span class="border-5"></span>
+        <span class="border-6"></span>
+        <span class="border-7"></span>
+      </div>
+      <h3 style="text-align: center; margin-top: 100px; color: white; text-shadow: 5px 5px 10px black;font-size: 90px;">Delivering Only 100%</h3>
+      <h3 style="text-align: center; color: white; text-shadow: 5px 5px 10px black;font-size: 50px; margin-top: -20px;">Genuine Supplements</h3>
+    </section>
+
+    <!-- CARD VIEW: BEST SELLING PRODUCTS -->
+    <section class="section container" id="products">
+      <h2 style="text-align:center;">Best Selling Products</h2>
+      <div class="card-grid" id="bestSellers"></div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="section container aman2" style="text-align: center; background: radial-gradient(circle at top, #784b2b, #0b0f14);">
+      <h2>Product Gallery</h2>
+      <p>Real athletes. Real results. Real performance.</p>
+      
+      <section class="gallerysection">
+        <article class="gallery">
+          <img src="https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=400" alt="guitar player at concert" />
+          <img src="https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=400" alt="duo singing" />
+          <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=400" alt="crowd cheering" />
+          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400" alt="singer performing" />
+          <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400" alt="singer fistbumping crowd" />
+          <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400" alt="man with a guitar singing" />
+          <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=400" alt="crowd looking at a lighted stage" />
+          <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=400" alt="woman singing on stage" />
+        </article>
+      </section>
+    </section>
+
+    <!-- SHOP BY CATEGORY -->
+    <section class="section container" id="categories">
+      <h2 style="text-align:center;">Shop by category</h2>
+      <div class="scroller" id="categoriesScroll"></div>
+    </section>
+
+    <!-- SEASON'S BESTSELLERS - ORIGINAL -->
+    <div class="container swiper " style="max-width: 1400px;"">
+      <h2 style="text-align: center;">Season's Bestsellers!</h2>
+      <div class="wrapper">
+        <div class="card-list swiper-wrapper" id="seasonBestsellers"></div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-slide-button swiper-button-prev"></div>
+        <div class="swiper-slide-button swiper-button-next"></div>
+      </div>
+    </div>
+
+    <!-- BRANDS SECTION - ORIGINAL -->
+    <section class="brand-section" id="brands">
+      <h2>Choose By Brands</h2>
+      <div class="brand-slider" id="slider"></div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="why-choose" id="about">
+      <h2>Why Choose NutritionXP?</h2>
+      <div class="features">
+        <div class="feature">
+          <img src="https://cdn-icons-png.flaticon.com/512/679/679720.png" />
+          <h4>Freeshipping</h4>
+          <p>Free PAN India Shipping.</p>
+        </div>
+        <div class="feature">
+          <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" />
+          <h4>24/7 Friendly Support</h4>
+          <p>Our support team always ready for you 7 days a week.</p>
+        </div>
+        <div class="feature">
+          <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" />
+          <h4>7 Days Easy Exchange</h4>
+          <p>Product Exchange is Eligible Within 7 Days of Delivery.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contact">
+      <div class="footer-grid">
+        <div>
+          <h3>Contact Us</h3>
+          <div class="contact-icons">
+            <i class="fab fa-x-twitter"></i>
+            <i class="fab fa-linkedin-in"></i>
+            <i class="fab fa-youtube"></i>
+            <i class="fab fa-twitch"></i>
+          </div>
+          <div class="contact-item"><i class="fa fa-phone"></i>7973079323</div>
+          <div class="contact-item"><i class="fa fa-phone"></i>nutritionxpmohali@gmail.com</div>
+          <div class="contact-item"><i class="fa fa-location-dot"></i> SCF 13, 1st Floor, Sector 64<br>Phase 10, Mohali - 160064</div>
+          <div class="logo">
+            <div class="logo-box">
+              <img src="https://instasize.com/api/image/b0e2426687abd8cb722c1532731ddab8925659a72793c6f6c6bd7e1fa1f1c8f3.png">
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+          <div class="quick-links">
+            <a href="#" onclick="showPage('home')">Home</a>
+            <a href="#">Gallery</a>
+            <a href="#">About</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Policies</a>
+          </div>
+        </div>
+        <div class="form">
+          <h3>Send Us A Message</h3>
+          <small>Kindly fill this form. Average response is within 24hrs</small>
+          <input type="text" placeholder="Jane Smith">
+          <input type="email" placeholder="jane@framer.com">
+          <select>
+            <option>Select...</option>
+            <option>Support</option>
+            <option>Sales</option>
+          </select>
+          <textarea rows="3" placeholder="jane@framer.com"></textarea>
+          <button>Submit</button>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- PRODUCT DETAIL PAGE -->
+  <div id="detailPage" class="page">
+    <div class="product-detail-container">
+      <a class="back-btn" onclick="showPage('home')">
+        <i class="fas fa-arrow-left"></i> Back to Products
+      </a>
+      <div class="product-detail-grid">
+        <div>
+          <img id="detailImage" class="product-image-main" src="" alt="Product">
+        </div>
+        <div class="product-info">
+          <span id="detailCategory" class="product-category"></span>
+          <h1 id="detailName"></h1>
+          <div id="detailPrice" class="product-price"></div>
+          <p class="product-description" id="detailDescription"></p>
+          <ul class="product-features">
+            <li><i class="fas fa-check-circle"></i> 100% Authentic Product</li>
+            <li><i class="fas fa-check-circle"></i> Free Shipping on orders above ₹999</li>
+            <li><i class="fas fa-check-circle"></i> Easy 7-day return policy</li>
+            <li><i class="fas fa-check-circle"></i> Secure payment options</li>
+          </ul>
+          <div class="quantity-selector">
+            <span>Quantity:</span>
+            <button onclick="changeDetailQuantity(-1)">-</button>
+            <span id="detailQuantity">1</span>
+            <button onclick="changeDetailQuantity(1)">+</button>
+          </div>
+          <button class="add-to-cart-btn" onclick="addToCartFromDetail()">
+            <i class="fas fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CART PAGE -->
+  <div id="cartPage" class="page">
+    <div class="cart-page-container">
+      <a class="back-btn" onclick="showPage('home')">
+        <i class="fas fa-arrow-left"></i> Continue Shopping
+      </a>
+      <h2 class="cart-page-title">Shopping Cart</h2>
+      <div id="cartPageContent"></div>
+    </div>
+  </div>
+
+  <!-- ORDER HISTORY PAGE -->
+  <div id="ordersPage" class="page">
+    <div class="order-history-container">
+      <a class="back-btn" onclick="showPage('home')">
+        <i class="fas fa-arrow-left"></i> Back to Home
+      </a>
+      <h2 class="order-history-title">Order History</h2>
+      <div id="orderHistoryContent"></div>
+    </div>
+  </div>
+
+  <!-- EMAIL NOTIFICATION POPUP -->
+  <div class="notification-overlay" id="notificationOverlay"></div>
+  <div class="notification-popup" id="notificationPopup">
+    <i class="fas fa-check-circle"></i>
+    <h3>Order Placed Successfully!</h3>
+    <p>Your order details have been sent to <strong>asb.asb.asbgfd@gmail.com</strong>. We will contact you shortly to confirm your order.</p>
+    <button class="card-button" onclick="closeNotification()" style="width:100%;padding:15px;">Continue Shopping</button>
+  </div>
+
+  <!-- Linking Swiper script -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  
+    
+//script.js
+
+const productsData = [
+        {
+            id: 1,
+            name: "Whey Protein Isolate",
+            category: "Protein",
+            description: "Premium quality whey protein isolate for muscle growth",
+            price: 49.99,
+            originalPrice: 69.99,
+            discount: 29,
+            rating: 4.8,
+            reviews: 1250,
+            image: "https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=500&h=500&fit=crop",
+        },
+        {
+            id: 2,
+            name: "Pre-Workout Explosion",
+            category: "Pre-Workout",
+            description: "High-energy pre-workout formula for intense training",
+            price: 39.99,
+            originalPrice: 54.99,
+            discount: 27,
+            rating: 4.6,
+            reviews: 890,
+            image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=500&h=500&fit=crop",
+        },
+        {
+            id: 3,
+            name: "Creatine Monohydrate",
+            category: "Creatine",
+            description: "Pure creatine monohydrate for strength and power",
+            price: 24.99,
+            originalPrice: 34.99,
+            discount: 29,
+            rating: 4.9,
+            reviews: 2100,
+            image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=500&h=500&fit=crop",
+        },
+        {
+            id: 4,
+            name: "BCAA Recovery",
+            category: "BCAA",
+            description: "Essential amino acids for muscle recovery",
+            price: 34.99,
+            originalPrice: 49.99,
+            discount: 30,
+            rating: 4.5,
+            reviews: 650,
+            image: "https://images.unsplash.com/photo-1605296867424-35fc25c9212a?w=500&h=500&fit=crop",
+        },
+        {
+            id: 5,
+            name: "Multivitamin Complete",
+            category: "Vitamins",
+            description: "Complete daily vitamin and mineral supplement",
+            price: 29.99,
+            originalPrice: 39.99,
+            discount: 25,
+            rating: 4.7,
+            reviews: 1450,
+            image: "https://images.unsplash.com/photo-1605296867424-35fc25c9212a?w=500&h=500&fit=crop",
+            
+          
+        },
+        {
+            id: 6,
+            name: "Thermogenic Fat Burner",
+            category: "Fat Burner",
+            description: "Advanced thermogenic formula for fat loss",
+            price: 44.99,
+            originalPrice: 64.99,
+            discount: 31,
+            rating: 4.4,
+            reviews: 780,
+            image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=500&fit=crop",
+        },
+        {
+            id: 7,
+            name: "Plant Protein Blend",
+            category: "Protein",
+            description: "Vegan protein blend from pea and rice",
+            price: 54.99,
+            originalPrice: 74.99,
+            discount: 27,
+            rating: 4.6,
+            reviews: 920,
+            image: "https://images.unsplash.com/photo-1605296867424-35fc25c9212a?w=500&h=500&fit=crop",
+        },
+        {
+            id: 8,
+            name: "Mass Gainer Pro",
+            category: "Protein",
+            description: "High-calorie mass gainer for bulking",
+            price: 59.99,
+            originalPrice: 79.99,
+            discount: 25,
+            rating: 4.5,
+            reviews: 560,
+            image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=500&h=500&fit=crop", 
+        },
+        {
+            id: 9,
+            name: "Energy Booster",
+            category: "Pre-Workout",
+            description: "Natural energy boost without crash",
+            price: 32.99,
+            originalPrice: 44.99,
+            discount: 27,
+            rating: 4.3,
+            reviews: 440,
+            image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=500&h=500&fit=crop",
+        },
+        {
+            id: 10,
+            name: "Omega-3 Fish Oil",
+            category: "Vitamins",
+            description: "High-potency omega-3 fatty acids",
+            price: 27.99,
+            originalPrice: 37.99,
+            discount: 26,
+            rating: 4.8,
+            reviews: 1680,
+            image: "https://images.unsplash.com/photo-1605296867424-35fc25c9212a?w=500&h=500&fit=crop",
+        },
+        {
+            id: 11,
+            name: "Glutamine Pure",
+            category: "BCAA",
+            description: "L-Glutamine for recovery and immunity",
+            price: 29.99,
+            originalPrice: 39.99,
+            discount: 25,
+            rating: 4.6,
+            reviews: 720,
+            image: "https://images.unsplash.com/photo-1605296867424-35fc25c9212a?w=500&h=500&fit=crop",
+        },
+        {
+            id: 12,
+            name: "CLA Softgels",
+            category: "Fat Burner",
+            description: "Conjugated linoleic acid for body composition",
+            price: 34.99,
+            originalPrice: 49.99,
+            discount: 30,
+            rating: 4.2,
+            reviews: 380,
+            image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=500&fit=crop",
+        },
+        {
+            id: 13,
+            name: "Casein Protein",
+            category: "Protein",
+            description: "Slow-digesting protein for overnight recovery",
+            price: 52.99,
+            originalPrice: 69.99,
+            discount: 24,
+            rating: 4.7,
+            reviews: 1050,
+            image: "https://images.unsplash.com/photo-1605296867424-35fc25c9212a?w=500&h=500&fit=crop",
+        },
+        {
+            id: 14,
+            name: "Vitamin D3 + K2",
+            category: "Vitamins",
+            description: "Essential vitamin combo for bone health",
+            price: 19.99,
+            originalPrice: 27.99,
+            discount: 29,
+            rating: 4.9,
+            reviews: 2340,
+            image: "https://images.unsplash.com/photo-1605296867424-35fc25c9212a?w=500&h=500&fit=crop",
+        },
+        {
+            id: 15,
+            name: "Nitric Oxide Booster",
+            category: "Pre-Workout",
+            description: "Enhance blood flow and muscle pumps",
+            price: 37.99,
+            originalPrice: 52.99,
+            discount: 28,
+            rating: 4.4,
+            reviews: 510,
+            image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=500&h=500&fit=crop",
+        }
+    ];
+
+
+
+let cart = JSON.parse(localStorage.getItem('nutritionxp_cart')) || [];
+
+// Get Stars HTML
+function getStars(rating) {
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+    let stars = '';
+    
+    for (let i = 0; i < fullStars; i++) {
+        stars += '★';
+    }
+    if (hasHalfStar) {
+        stars += '★';
+    }
+    while (stars.length < 5) {
+        stars += '☆';
+    }
+    
+    return stars;
+}
+
+
+// Clear All Filters
+function clearAllFilters() {
+    // Clear category checkboxes
+    document.querySelectorAll('.filter-option input[type="checkbox"]').forEach(cb => cb.checked = false);
+    
+    // Reset price range
+    document.getElementById('minPrice').value = 0;
+    document.getElementById('maxPrice').value = 5000;
+    document.getElementById('rangeMin').value = 0;
+    document.getElementById('rangeMax').value = 5000;
+    updatePriceRange();
+    
+    // Reset rating
+    document.getElementById('rating-all').checked = true;
+    
+    // Reset sort
+    document.getElementById('sortDropdown').value = 'default';
+    
+    applyFilters();
+}
+
+
+
+// Update Price Range
+function updatePriceRange() {
+    const rangeMin = document.getElementById('rangeMin');
+    const rangeMax = document.getElementById('rangeMax');
+    const minPrice = document.getElementById('minPrice');
+    const maxPrice = document.getElementById('maxPrice');
+    const rangeProgress = document.getElementById('rangeProgress');
+    
+    let minVal = parseInt(rangeMin.value);
+    let maxVal = parseInt(rangeMax.value);
+    
+    if (maxVal - minVal < 100) {
+        if (event.target === rangeMin) {
+            rangeMin.value = maxVal - 100;
+            minVal = maxVal - 100;
+        } else {
+            rangeMax.value = minVal + 100;
+            maxVal = minVal + 100;
+        }
+    }
+    
+    minPrice.value = minVal;
+    maxPrice.value = maxVal;
+    
+    const percentMin = (minVal / 5000) * 100;
+    const percentMax = (maxVal / 5000) * 100;
+    rangeProgress.style.left = percentMin + '%';
+    rangeProgress.style.width = (percentMax - percentMin) + '%';
+    
+    applyFilters();
+}
+ 
+
+
+</script>
+  <script>
+    
+
+//category page script
+//category-products.js
+// Product Data
+
+
+    // Display Products
+    function displayProducts(products) {
+        const productsGrid = document.getElementById('productsGrid');
+        const resultsCount = document.getElementById('resultsCount');
+        
+        resultsCount.textContent = `Showing ${products.length} product${products.length !== 1 ? 's' : ''}`;
+        if (products.length === 0) {
+            productsGrid.innerHTML = `
+                <div class="no-products">
+                    <i class="fas fa-search"></i>
+                    <h3>No products found</h3>
+                    <p>Try adjusting your filters</p>
+                </div>
+            `;
+            return;
+        }
+        productsGrid.innerHTML = products.map(product => `
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    ${product.discount > 0 ? `<div class="discount-badge">-${product.discount}%</div>` : ''}
+                    
+                </div>
+                <div class="product-info">
+                    <div class="product-category">${product.category}</div>
+                    <h3 class="product-name">${product.name}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <div class="product-rating">
+                        <span class="stars">${getStars(product.rating)}</span>
+                        <span class="rating-count">(${product.reviews})</span>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">$${product.price.toFixed(2)}</span>
+                            ${product.originalPrice ? `<span class="price-original">$${product.originalPrice.toFixed(2)}</span>` : ''}
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCartFromDetail()">
+                            <i class="fas fa-cart-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Apply Filters
+    function applyFilters() {
+        let filteredProducts = [...productsData];
+        // Category Filter
+        const categoryCheckboxes = document.querySelectorAll('#protein, #preworkout, #creatine, #bcaa, #vitamins, #fatburner');
+        const selectedCategories = Array.from(categoryCheckboxes)
+            .filter(cb => cb.checked)
+            .map(cb => cb.value);
+        
+        if (selectedCategories.length > 0) {
+            filteredProducts = filteredProducts.filter(p => selectedCategories.includes(p.category));
+        }
+        // Price Range Filter
+        const minPrice = parseFloat(document.getElementById('minPrice').value);
+        const maxPrice = parseFloat(document.getElementById('maxPrice').value);
+        filteredProducts = filteredProducts.filter(p => p.price >= minPrice && p.price <= maxPrice);
+        // Rating Filter
+        const selectedRating = document.querySelector('input[name="rating"]:checked')?.value || 0;
+        if (selectedRating > 0) {
+            filteredProducts = filteredProducts.filter(p => p.rating >= parseFloat(selectedRating));
+        }
+        // Discount Filter
+        const discountCheckboxes = document.querySelectorAll('#discount50, #discount40, #discount30, #discount20, #discount10');
+        const selectedDiscounts = Array.from(discountCheckboxes)
+            .filter(cb => cb.checked)
+            .map(cb => parseInt(cb.value));
+        
+        if (selectedDiscounts.length > 0) {
+            const minDiscount = Math.min(...selectedDiscounts);
+            filteredProducts = filteredProducts.filter(p => p.discount >= minDiscount);
+        }
+        // Sort Products
+        const sortValue = document.getElementById('sortDropdown').value;
+        switch(sortValue) {
+            case 'price-low':
+                filteredProducts.sort((a, b) => a.price - b.price);
+                break;
+            case 'price-high':
+                filteredProducts.sort((a, b) => b.price - a.price);
+                break;
+            case 'rating':
+                filteredProducts.sort((a, b) => b.rating - a.rating);
+                break;
+            case 'name':
+                filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+                break;
+        }
+        displayProducts(filteredProducts);
+    }
+
+
+    // Show Toast
+    function showToast(message) {
+        const existingToast = document.querySelector('.toast');
+        if (existingToast) {
+            existingToast.remove();
+        }
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `
+            <i class="fas fa-check-circle"></i>
+            <span>${message}</span>
+        `;
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            toast.remove();
+        }, 3000);
+    }
+//main page script
+// PRODUCT DATA
+    const products = [
+      {id: 1, name: "Big Muscle Carnage Preworkout", price: 1100, image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=400", category: "PreWorkouts", description: "High-intensity pre-workout formula designed to maximize your energy, focus, and endurance during intense training sessions."},
+      {id: 2, name: "Muscleblaze Biozyme Whey Protein 1kg", price: 2700, image: "https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=400", category: "Whey Protein", description: "Enhanced absorption whey protein with added digestive enzymes for better protein utilization and muscle recovery."},
+      {id: 3, name: "Exalt Priority Whey Protein 1kg", price: 2600, image: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=400", category: "Whey Protein", description: "Premium quality whey protein isolate for lean muscle building and faster recovery post-workout."},
+      {id: 4, name: "ON Creatine 250gms", price: 700, image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=400", category: "Creatine", description: "Pure micronized creatine monohydrate for increased strength, power output, and muscle mass."},
+      {id: 5, name: "ON Gold Standard Whey 2lbs", price: 3200, image: "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=400", category: "Whey Protein", description: "The world's best-selling whey protein powder with 24g protein per serving and minimal carbs."},
+      {id: 6, name: "Redcon Total War (Preworkout)", price: 1800, image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=400", category: "PreWorkouts", description: "All-in-one pre-workout with enhanced energy blend, focus matrix, and powerful pumps."},
+      {id: 7, name: "Muscleblaze Wrathx 20 Servings", price: 1100, image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=400", category: "PreWorkouts", description: "Extreme energy pre-workout supplement with beta-alanine for enhanced performance."},
+      {id: 8, name: "Dymatize Elite 5lbs", price: 8500, image: "https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=400", category: "Whey Protein", description: "Fast-digesting whey protein isolate with 25g protein and 5.5g BCAAs per serving."}
+    ];
+
+    const categories = [
+      {name: "Whey Protein Concentrate", desc: "Muscle growth and recovery", image: "https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=400"},
+      {name: "Whey Protein Isolate", desc: "Fast absorbing lean protein", image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=400"},
+      {name: "Creatine", desc: "Strength and power boost", image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=400"},
+      {name: "L-Carnitine", desc: "Fat burning energy support", image: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=400"},
+      {name: "Fish Oil", desc: "Heart and joint health", image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=400"},
+      {name: "Multivitamins", desc: "Daily essential nutrients", image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400"},
+      {name: "PreWorkouts", desc: "Energy focus performance boost", image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=400"},
+      {name: "Glutamine", desc: "Muscle recovery immune support", image: "https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=400"},
+      {name: "Testoterene", desc: "Supports natural hormone levels", image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=400"},
+      {name: "EAA/BCAA", desc: "Muscle repair and endurance", image: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=400"},
+      {name: "Peanut Butter", desc: "Healthy fats protein source", image: "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=400"},
+      {name: "Mass Gainers", desc: "Weight and muscle gain", image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=400"},
+      {name: "Carbs Blend", desc: "Instant energy fuel source", image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=400"},
+      {name: "Arginine", desc: "Blood flow muscle pump", image: "https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=400"},
+      {name: "ZMA", desc: "Sleep recovery hormone support", image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400"},
+      {name: "Muscle Gain Tablets", desc: "Supports lean muscle growth", image: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=400"},
+      {name: "Ashwangandha", desc: "Stress relief strength support", image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400"},
+      {name: "Collagen", desc: "Skin joints tissue support", image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=400"},
+      {name: "Protein Bars", desc: "Convenient high protein snack", image: "https://images.unsplash.com/photo-1587334207976-c8c76c14e3e2?w=400"}
+    ];
+
+    const brands = [
+      {name: "Optimum Nutrition", image: "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=200"},
+      {name: "Labrada", image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=200"},
+      {name: "Muscletech", image: "https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=200"},
+      {name: "Muscleblaze", image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=200"},
+      {name: "Healthfarm", image: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=200"},
+      {name: "Fast&Up", image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=200"},
+      {name: "1UP", image: "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=200"},
+      {name: "Isopure", image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=200"},
+      {name: "Raw Nutrition", image: "https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=200"},
+      {name: "QNT", image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=200"},
+      {name: "BPI", image: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=200"},
+      {name: "Ronnie Coleman", image: "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=200"},
+      {name: "GNC", image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=200"},
+      {name: "One Science", image: "https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=200"},
+      {name: "Avvatar", image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=200"},
+      {name: "Redcon", image: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=200"},
+      {name: "Prosupps", image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=200"},
+      {name: "Ultimate Nutrition", image: "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=200"},
+      {name: "Dymatize", image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=200"},
+      {name: "Myogenetix", image: "https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=200"},
+      {name: "Mutant", image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=200"},
+      {name: "Myfitness", image: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=200"},
+      {name: "Nutrex", image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=200"},
+      {name: "Genetic Nutrition", image: "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=200"},
+      {name: "Rule1", image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=200"},
+      {name: "Asitis", image: "https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=200"},
+      {name: "PHD", image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=200"},
+      {name: "Bodyfirst Nutrition", image: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=200"},
+      {name: "Ritebite", image: "https://images.unsplash.com/photo-1587334207976-c8c76c14e3e2?w=200"},
+      {name: "Exalt", image: "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=200"},
+      {name: "William Bonac", image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=200"},
+      {name: "PVL", image: "https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=200"},
+      {name: "Kapiva", image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=200"},
+      {name: "Xtend", image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=200"},
+      {name: "Scitron", image: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=200"},
+      {name: "Wellversed", image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=200"}
+    ];
+
+    // CART
+    
+    let currentProduct = null;
+    let detailQuantity = 1;
+
+    // UPDATE CART COUNT
+    function updateCartCount() {
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById('cartCount').textContent = count;
+      const mobileCartCount = document.getElementById('mobileCartCount');
+      if (mobileCartCount) {
+        mobileCartCount.textContent = count;
+      }
+    }
+
+    // MOBILE MENU FUNCTIONS
+    function toggleMobileMenu() {
+      const mobileNav = document.getElementById('mobileNav');
+      const overlay = document.getElementById('mobileNavOverlay');
+      const burger = document.getElementById('burgerMenu');
+      
+      mobileNav.classList.toggle('active');
+      overlay.classList.toggle('active');
+      burger.classList.toggle('active');
+      
+      // Prevent body scroll when menu is open
+      if (mobileNav.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+
+    function closeMobileMenu() {
+      const mobileNav = document.getElementById('mobileNav');
+      const overlay = document.getElementById('mobileNavOverlay');
+      const burger = document.getElementById('burgerMenu');
+      
+      mobileNav.classList.remove('active');
+      overlay.classList.remove('active');
+      burger.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // RENDER PRODUCTS
+    function renderProducts() {
+      const container = document.getElementById('bestSellers');
+      container.innerHTML = products.map(p => `
+        <div class="card">
+          <img src="${p.image}" alt="${p.name}">
+          <h3>${p.name}</h3>
+          <p class="price">₹${p.price.toLocaleString()}</p>
+          <div style="margin-top: 20px;">
+            <a href="#" class="card-button" onclick="viewDetail(${p.id}); return false;">View Details</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // RENDER CATEGORIES
+    function renderCategories() {
+      const container = document.getElementById('categoriesScroll');
+      container.innerHTML = categories.map(c => `
+        <div class="scroll-card">
+          <img src="${c.image}" alt="${c.name}">
+          <div style="height: 110px;">
+            <h3>${c.name}</h3>
+            <p>${c.desc}</p>
+          </div>
+          <div style="margin-top: 20px;">
+            <a href="index2.html?category=${encodeURIComponent(c.name)}" class="card-button">View More</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // RENDER SEASON BESTSELLERS
+    function renderSeasonBestsellers() {
+      const container = document.getElementById('seasonBestsellers');
+      container.innerHTML = products.slice(0, 6).map(p => `
+        <div class="card swiper-slide">
+          <div class="card-image">
+            <img src="${p.image}" alt="${p.name}" />
+            <div class="card-tag">${p.category}</div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">${p.name}</h3>
+            <p class="card-text">${p.description}</p>
+            <div class="card-footer">
+              <div class="card-profile">
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=100" alt="User" />
+                <div class="card-profile-info">
+                  <span class="card-profile-name">₹${p.price.toLocaleString()}</span>
+                  <span class="card-profile-role">${p.category}</span>
+                </div>
+              </div>
+              <a href="#" class="card-button" onclick="viewDetail(${p.id}); return false;">View More</a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // RENDER BRANDS
+    function renderBrands() {
+      const container = document.getElementById('slider');
+      container.innerHTML = brands.map((b) => `
+        <div class="brand-item">
+          <a href="index3.html?category=${encodeURIComponent(b.name)}">
+            <img src="${b.image}">
+          </a>
+          <p>${b.name}</p>
+        </div>
+      `).join('');
+    }
+
+    // PAGE NAVIGATION
+    function showPage(pageName) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      if (pageName === 'home') {
+        document.getElementById('homePage').classList.add('active');
+      } else if (pageName === 'detail') {
+        document.getElementById('detailPage').classList.add('active');
+      } else if (pageName === 'cart') {
+        document.getElementById('cartPage').classList.add('active');
+        renderCartPage();
+      } else if (pageName === 'orders') {
+        document.getElementById('ordersPage').classList.add('active');
+        renderOrderHistory();
+      }
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function scrollToSection(id) {
+      showPage('home');
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({behavior: 'smooth', block: 'start'});
+        }
+      }, 100);
+     
+    }
+
+    // VIEW PRODUCT DETAIL
+    function viewDetail(productId) {
+      currentProduct = products.find(p => p.id === productId);
+      if (!currentProduct) return;
+      
+      document.getElementById('detailImage').src = currentProduct.image;
+      document.getElementById('detailName').textContent = currentProduct.name;
+      document.getElementById('detailPrice').textContent = '₹' + currentProduct.price.toLocaleString();
+      document.getElementById('detailCategory').textContent = currentProduct.category;
+      document.getElementById('detailDescription').textContent = currentProduct.description;
+      detailQuantity = 1;
+      document.getElementById('detailQuantity').textContent = detailQuantity;
+      
+      showPage('detail');
+    }
+
+    // CHANGE QUANTITY IN DETAIL PAGE
+    function changeDetailQuantity(delta) {
+      detailQuantity = Math.max(1, detailQuantity + delta);
+      document.getElementById('detailQuantity').textContent = detailQuantity;
+    }
+
+    // ADD TO CART FROM DETAIL PAGE
+    function addToCartFromDetail() {
+      if (!currentProduct) return;
+      
+      const existingItem = cart.find(item => item.id === currentProduct.id);
+      if (existingItem) {
+        existingItem.quantity += detailQuantity;
+      } else {
+        cart.push({...currentProduct, quantity: detailQuantity});
+      }
+      
+      localStorage.setItem('nutritionxp_cart', JSON.stringify(cart));
+      updateCartCount();
+      showPage('cart');
+    }
+
+    // RENDER CART PAGE
+    function renderCartPage() {
+      const container = document.getElementById('cartPageContent');
+      
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="empty-cart-page">
+            <i class="fas fa-shopping-cart"></i>
+            <h3>Your cart is empty</h3>
+            <p>Add some amazing products to get started!</p>
+            <button class="continue-shopping-btn" onclick="showPage('home')">Continue Shopping</button>
+          </div>
+        `;
+        return;
+      }
+
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      
+      container.innerHTML = `
+        <div class="cart-items-list">
+          ${cart.map((item, index) => `
+            <div class="cart-page-item">
+              <img src="${item.image}" alt="${item.name}">
+              <div class="cart-page-item-info">
+                <h3>${item.name}</h3>
+                <p>${item.category}</p>
+                <div class="item-price">₹${item.price.toLocaleString()}</div>
+                <div class="quantity-selector">
+                  <button onclick="updateCartQuantity(${index}, -1)">-</button>
+                  <span>${item.quantity}</span>
+                  <button onclick="updateCartQuantity(${index}, 1)">+</button>
+                </div>
+              </div>
+              <div class="cart-page-controls">
+                <div style="font-size:20px;font-weight:700;color:#FC9145;">₹${(item.price * item.quantity).toLocaleString()}</div>
+                <button class="card-button" onclick="removeFromCart(${index})" style="background:#ff4444;">
+                  <i class="fas fa-trash"></i> Remove
+                </button>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+        <div class="cart-summary">
+          <h3>Order Summary</h3>
+          <p>Total Items: ${cart.reduce((sum, item) => sum + item.quantity, 0)}</p>
+          <div class="total-amount">₹${total.toLocaleString()}</div>
+          <button class="checkout-page-btn" onclick="checkout()">
+            <i class="fas fa-lock"></i> Proceed to Checkout
+          </button>
+        </div>
+      `;
+    }
+
+    // UPDATE CART QUANTITY
+    function updateCartQuantity(index, delta) {
+      cart[index].quantity = Math.max(1, cart[index].quantity + delta);
+      localStorage.setItem('nutritionxp_cart', JSON.stringify(cart));
+      updateCartCount();
+      renderCartPage();
+    }
+
+    // REMOVE FROM CART
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('nutritionxp_cart', JSON.stringify(cart));
+      updateCartCount();
+      renderCartPage();
+    }
+
+    // CHECKOUT
+    function checkout() {
+      if (cart.length === 0) return;
+      
+      // Create order object
+      const order = {
+        orderNumber: 'ORD' + Date.now(),
+        date: new Date().toLocaleString(),
+        items: [...cart],
+        total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+        status: 'Pending'
+      };
+      
+      // Save to order history
+      let orderHistory = JSON.parse(localStorage.getItem('nutritionxp_orders')) || [];
+      orderHistory.unshift(order);
+      localStorage.setItem('nutritionxp_orders', JSON.stringify(orderHistory));
+      
+      // Send email
+      sendOrderEmail(order);
+      
+      // Clear cart
+      cart = [];
+      localStorage.setItem('nutritionxp_cart', JSON.stringify(cart));
+      updateCartCount();
+      
+      // Show notification
+      showNotification();
+    }
+
+    // SEND ORDER EMAIL
+    function sendOrderEmail(order) {
+      // Create email content
+      let itemsList = order.items.map(item => 
+        `${item.name} - Qty: ${item.quantity} - ₹${(item.price * item.quantity).toLocaleString()}`
+      ).join('\n');
+      
+      let emailBody = `
+New Order Received!
+==================
+
+Order Number: ${order.orderNumber}
+Order Date: ${order.date}
+
+ORDER DETAILS:
+--------------
+${itemsList}
+
+TOTAL AMOUNT: ₹${order.total.toLocaleString()}
+
+Customer will be contacted soon for confirmation.
+      `;
+
+      // Using EmailJS (Free service)
+      // Note: You need to set up EmailJS account and get your credentials
+      // For now, we'll use a simple mailto fallback
+      
+      const mailtoLink = `mailto:asb.asb.asbgfd@gmail.com?subject=New Order - ${order.orderNumber}&body=${encodeURIComponent(emailBody)}`;
+      
+      // Try to send via EmailJS first (if configured)
+      if (typeof emailjs !== 'undefined') {
+        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+          to_email: 'asb.asb.asbgfd@gmail.com',
+          order_number: order.orderNumber,
+          order_date: order.date,
+          order_items: itemsList,
+          order_total: '₹' + order.total.toLocaleString()
+        }).then(
+          function(response) {
+            console.log('Email sent successfully!', response);
+          },
+          function(error) {
+            console.log('Email failed, opening mailto...', error);
+            window.open(mailtoLink, '_blank');
+          }
+        );
+      } else {
+        // Fallback to mailto
+        window.open(mailtoLink, '_blank');
+      }
+    }
+
+    // SHOW NOTIFICATION
+    function showNotification() {
+      document.getElementById('notificationOverlay').classList.add('show');
+      document.getElementById('notificationPopup').classList.add('show');
+    }
+
+    // CLOSE NOTIFICATION
+    function closeNotification() {
+      document.getElementById('notificationOverlay').classList.remove('show');
+      document.getElementById('notificationPopup').classList.remove('show');
+      showPage('orders');
+    }
+
+    // RENDER ORDER HISTORY
+    function renderOrderHistory() {
+      const container = document.getElementById('orderHistoryContent');
+      let orderHistory = JSON.parse(localStorage.getItem('nutritionxp_orders')) || [];
+      
+      if (orderHistory.length === 0) {
+        container.innerHTML = `
+          <div class="empty-order-history">
+            <i class="fas fa-receipt"></i>
+            <h3>No orders yet</h3>
+            <p>Your order history will appear here once you place your first order.</p>
+            <button class="continue-shopping-btn" onclick="showPage('home')">Start Shopping</button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = orderHistory.map(order => `
+        <div class="order-card">
+          <div class="order-header">
+            <div>
+              <div class="order-number">${order.orderNumber}</div>
+              <div class="order-date">${order.date}</div>
+            </div>
+            <div class="order-status">${order.status}</div>
+          </div>
+          <div class="order-items">
+            ${order.items.map(item => `
+              <div class="order-item-row">
+                <img src="${item.image}" alt="${item.name}">
+                <div>
+                  <div class="order-item-name">${item.name}</div>
+                  <div class="order-item-quantity">Quantity: ${item.quantity}</div>
+                </div>
+                <div class="order-item-price">₹${item.price.toLocaleString()}</div>
+                <div class="order-item-price">₹${(item.price * item.quantity).toLocaleString()}</div>
+              </div>
+            `).join('')}
+          </div>
+          <div class="order-total">
+            <span class="order-total-label">Total Amount:</span>
+            <span class="order-total-amount">₹${order.total.toLocaleString()}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // BRAND SLIDER DRAG - ORIGINAL
+    const slider = document.getElementById("slider");
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    slider.addEventListener("mousedown", (e) => {
+      isDown = true;
+      slider.classList.add("active");
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener("mouseleave", () => {
+      isDown = false;
+    });
+
+    slider.addEventListener("mouseup", () => {
+      isDown = false;
+    });
+
+    slider.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 2;
+      slider.scrollLeft = scrollLeft - walk;
+    });
+
+    // INITIALIZE SWIPER - ORIGINAL
+    new Swiper(".wrapper", {
+      loop: true,
+      spaceBetween: 30,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        dynamicBullets: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        0: {slidesPerView: 1},
+        768: {slidesPerView: 2},
+        1024: {slidesPerView: 3},
+      },
+    });
+
+    // INITIALIZE
+    window.addEventListener('DOMContentLoaded', () => {
+      renderProducts();
+      renderCategories();
+      renderSeasonBestsellers();
+      renderBrands();
+      updateCartCount();
+      
+      // Close notification on overlay click
+      document.getElementById('notificationOverlay').addEventListener('click', closeNotification);
+    });
+  
+  </script>
+
+</body>
+</html>
